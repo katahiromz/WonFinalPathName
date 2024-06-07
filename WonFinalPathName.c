@@ -148,6 +148,8 @@ WonGetFinalPathNameByHandleW(
     DWORD error;
     WCHAR szNTPath[MAX_PATH];
 
+    lpszFilePath[0] = 0;
+
     error = GetNtPathFromHandle(hFile, szNTPath, _countof(szNTPath));
     if (error)
     {
@@ -215,6 +217,8 @@ WonGetFinalPathNameByHandleA(
 {
     WCHAR szPath[MAX_PATH];
     DWORD ret;
+
+    lpszFilePath[0] = 0;
 
     ret = WonGetFinalPathNameByHandleW(hFile, szPath, _countof(szPath), dwFlags);
     if (ret == 0)
